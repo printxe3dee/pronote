@@ -1528,9 +1528,7 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function() {
             // Index 0 = accueil (home icon)
             if (index === 0) {
-                mainContent.style.display = 'grid';
-                cahierSection.classList.remove('active');
-                updateMenuStyle(0);
+                window.location.href = 'index.html';
             } 
             // Index 1 = Mes données
             else if (index === 1) {
