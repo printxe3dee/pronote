@@ -510,16 +510,18 @@ body{
 <div class="average-bloc">
     <div class="average-row">
         <span class="average-label">Moyenne générale élève :</span>
-        <span class="average-value" id="studentAverage">12,22</span>
+        <span class="average-value" id="studentAverage">12,02</span>
     </div>
     <div class="average-row">
         <span class="average-label">Moyenne générale classe :</span>
-        <span class="average-value" id="classAverage">10,69</span>
+        <span class="average-value" id="classAverage">10,89</span>
     </div>
 </div>
 
 <script>
 const notesData = [
+    {subject: 'SC. ECONO.& SOCIALES', test: 'Evaluation', date: '10 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 11,46', hasLinks: false},
+    {subject: 'FRANCAIS', test: 'Contraction de texte', date: '13 février 2025', score: '11,50', max: '20', average: 'Moyenne classe : 9,14', hasLinks: false},
     {subject: 'FRANCAIS', test: 'Discours argumentatif', date: '10 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 10,86', hasLinks: false},
     {subject: 'SC.NUMERIQ.TECHNOL.', test: 'Score PIX', date: '6 février 2025', score: '573,00/999', max: '999', average: 'Moyenne classe : 248,43/999', hasLinks: false},
     {subject: 'PHYSIQUE-CHIMIE', test: 'TP Sandwich', date: '4 février 2025', score: 'Abs/10', max: '10', average: 'Moyenne classe : 7,43/10', hasLinks: false},
@@ -673,8 +675,6 @@ function selectNote(note, element) {
             </div>
             ${note.hasLinks ? `
                 <div class="detail-links">
-                    <button class="detail-link">Sujet</button>
-                    <button class="detail-link">Corrigé</button>
                 </div>
             ` : ''}
         </div>
