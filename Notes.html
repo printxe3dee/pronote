@@ -467,9 +467,9 @@ body{
             <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="white"/>
         </svg>
     </div>
-    <div class="menu-item">Mes données</div>
+    <div class="menu-item" onclick="window.location.href='Mesdonnees.html'" style="cursor:pointer;">Mes données</div>
     <div class="menu-item" onclick="window.location.href='CahierDeTextes.html'" style="cursor:pointer;">Cahier<br>de textes</div>
-    <div class="menu-item notes">Notes</div>
+    <div class="menu-item notes" onclick="window.location.href='Notes.html'" style="cursor:pointer;">Notes</div>
     <div class="menu-item" onclick="window.location.href='VieScolaire.html'" style="cursor:pointer;">Vie<br>scolaire</div>
     <div class="menu-item">Communication</div>
     <a href="mailto:0781884z@ac-versailles.fr" class="menu-item icon-only" style="margin-left:auto; text-decoration: none; display: flex; align-items: center; justify-content: center;">
@@ -510,20 +510,31 @@ body{
 <div class="average-bloc">
     <div class="average-row">
         <span class="average-label">Moyenne générale élève :</span>
-        <span class="average-value" id="studentAverage">12,22</span>
+        <span class="average-value" id="studentAverage">12,02</span>
     </div>
     <div class="average-row">
         <span class="average-label">Moyenne générale classe :</span>
-        <span class="average-value" id="classAverage">10,69</span>
+        <span class="average-value" id="classAverage">10,89</span>
     </div>
 </div>
 
 <script>
 const notesData = [
+    {subject: 'SC. ECONO.& SOCIALES', test: 'Evaluation', date: '21 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 11,46', hasLinks: false},
+    {subject: 'FRANCAIS', test: 'Contraction de texte', date: '13 février 2025', score: '11,50', max: '20', average: 'Moyenne classe : 9,14', hasLinks: false},
     {subject: 'FRANCAIS', test: 'Discours argumentatif', date: '10 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 10,86', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Sandwich', date: '10 février 2025', score: '11,50', max: '20', average: 'Moyenne classe : 7,43/10', hasLinks: false},
     {subject: 'SC.NUMERIQ.TECHNOL.', test: 'Score PIX', date: '6 février 2025', score: '573,00/999', max: '999', average: 'Moyenne classe : 248,43/999', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Sandwich', date: '4 février 2025', score: '7,00', max: '10', average: 'Moyenne classe : 7,43/10', hasLinks: false},
     {subject: 'PHYSIQUE-CHIMIE', test: 'TP Sandwich', date: '4 février 2025', score: 'Abs/10', max: '10', average: 'Moyenne classe : 7,43/10', hasLinks: false},
     {subject: 'ESPAGNOL LV2', test: 'Compréhension écrite', date: '3 février 2025', score: '13,00', max: '20', average: 'Moyenne groupe : 10,27', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Etudes de mouvements', date: '27 mars 2025', score: '11,63', max: '20', average: 'Moyenne classe : 6,34/10', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Referentiel', date: '19 mars 2025', score: '9,00', max: '10', average: 'Moyenne classe : 6,62/10', hasLinks: false},
+    {subject: 'SCIENCES VIE & TERRE', test: 'ADN', date: '4 février 2025', score: '17,00', max: '20', average: 'Moyenne classe : 11,61', hasLinks: false},
+    {subject: 'HISTOIRE-GEOGRAPHIE', test: 'Activité Cartes anciennes', date: '17 mars 2025', score: '18,00', max: '20', average: 'Moyenne classe : 8,58/10', hasLinks: false},
+    {subject: 'HISTOIRE-GEOGRAPHIE', test: 'Activité Cartes anciennes', date: '17 mars 2025', score: '9,00', max: '10', average: 'Moyenne classe : 8,58/10', hasLinks: false},
+    {subject: 'ANGLAIS LV1', test: 'Identity snapshot', date: '17 mars 2025', score: '13,00', max: '20', average: 'Moyenne groupe : 5,59/10', hasLinks: false},
+    {subject: 'ANGLAIS LV1', test: 'Identity snapshot', date: '17 mars 2025', score: '6,50', max: '20', average: 'Moyenne groupe : 5,59/10', hasLinks: false},
     {subject: 'HISTOIRE-GEOGRAPHIE', test: 'DM Croquis France', date: '29 janvier 2025', score: '12,00', max: '20', average: 'Moyenne classe : 10,03', hasLinks: true},
     {subject: 'ESPAGNOL LV2', test: 'EVALUATION ORALE COMMUNE', date: '26 janvier 2025', score: '12,00', max: '20', average: 'Moyenne groupe : 12,44', hasLinks: false},
     {subject: 'ESPAGNOL LV2', test: 'EOI 3MN autrretratos', date: '20 janvier 2025', score: '13,00', max: '20', average: 'Moyenne groupe : 12,23', hasLinks: false},
