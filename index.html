@@ -909,15 +909,15 @@ body{
 </div>
 
 <div class="header-bottom">
-    <div class="menu-item active">
+    <div class="menu-item active" onclick="window.location.href='index.html'" style="cursor:pointer;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#4b4b4b"/>
         </svg>
     </div>
-    <div class="menu-item">Mes données</div>
-    <div class="menu-item">Cahier<br>de textes</div>
-    <div class="menu-item">Notes</div>
-    <div class="menu-item">Vie<br>scolaire</div>
+    <div class="menu-item" onclick="window.location.href='Mesdonnees.html'" style="cursor:pointer;">Mes données</div>
+    <div class="menu-item" onclick="window.location.href='CahierDeTextes.html'" style="cursor:pointer;">Cahier<br>de textes</div>
+    <div class="menu-item" onclick="window.location.href='Notes.html'" style="cursor:pointer;">Notes</div>
+    <div class="menu-item" onclick="window.location.href='VieScolaire.html'" style="cursor:pointer;">Vie<br>scolaire</div>
     <div class="menu-item">Communication</div>
     <a href="mailto:0781884z@ac-versailles.fr" class="menu-item icon-only" style="margin-left:auto; text-decoration: none; display: flex; align-items: center; justify-content: center;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1005,6 +1005,10 @@ body{
             <div class="carnet-item-type">Absence justifiée</div>
             <div class="carnet-item-date">Mer. 10 sept. de 10h50 à 12h10</div>
             <div class="carnet-item-details">1h30 de cours manqué - Motif : GREVE DES TRANSPORTS</div>
+        </div>
+        <div class="carnet-item absence">
+            <div class="carnet-item-type">Absence non justifiée</div>
+            <div class="carnet-item-date">du 1 avr. au 2 avr.</div>
         </div>
     </div>
 
@@ -1286,6 +1290,55 @@ body{
             </div>
             <div class="note-score">13,00</div>
         </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">PHYSIQUE-CHIMIE</div>
+                <div class="note-date">27 mars</div>
+            </div>
+            <div class="note-score">11,63</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">PHYSIQUE-CHIMIE</div>
+                <div class="note-date">19 mars</div>
+            </div>
+            <div class="note-score">9,00</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">SCIENCES VIE & TERRE</div>
+                <div class="note-date">4 févr.</div>
+            </div>
+            <div class="note-score">17,00</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">HISTOIRE-GEOGRAPHIE</div>
+                <div class="note-date">17 mars</div>
+            </div>
+            <div class="note-score">18,00</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">HISTOIRE-GEOGRAPHIE</div>
+                <div class="note-date">17 mars</div>
+            </div>
+            <div class="note-score">9,00 /10</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">ANGLAIS LV1</div>
+                <div class="note-date">17 mars</div>
+            </div>
+            <div class="note-score">13,00</div>
+        </div>
+        <div class="note-item">
+            <div class="note-info">
+                <div class="note-subject">ANGLAIS LV1</div>
+                <div class="note-date">17 mars</div>
+            </div>
+            <div class="note-score">6,50 /10</div>
+        </div>
     </div>
 
     <div class="devoirs-card">
@@ -1294,7 +1347,7 @@ body{
         </div>
 
         <div class="devoirs-section">
-            <div class="devoirs-section-title">Pour mardi 17 mars</div>
+            <div class="devoirs-section-title">Pour mardi 31 mars</div>
 
             <div class="devoir-item francais">
                 <div class="devoir-content">
@@ -1326,33 +1379,32 @@ body{
                     </label>
                 </div>
             </div>
+            <div class="devoir-item">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">SC.NUMERIQ.TECHNOL.</div>
+                    <div class="devoir-description">Les élèves n'ayant pas leur score PIX indiqué dans Pronote doivent au plus vite saisir le code ci-dessous que je puisse récupérer leur profil. Code PIX : NQYKXM785 Une fois le profil enregistré ; il faut que votre score soit sur Pronote ; vous avez jusqu'au vendredi 17 avril pour gagner des points. 1 point sur 20 = 10 points PIX Par conséquent pour avoir 20/20, il faut gagner 200 points PIX. Un conseil pour que votre score augmente plus vite, concentrez-vous sur les items où vous avez le plus petit niveau : cela va généralement assez vite. Je vous transmettrai un autre code lorsque j'aurai récupéré tous les profils pour valider votre progression. Tout retard dans la remontée du profil entrainera la perte de 1 point sur 20 par jour de retard. Par exemple, si vous transmettez votre profil le dimanche 19 avril, vous perdrez 2 points sur 20. Bon courage !
+                    <div class="devoir-footer">
+                    </div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
         
 
         </div>
 
         <div class="devoirs-section">
-            <div class="devoirs-section-title">Pour  jeudi 19 mars</div>
-            
+            <div class="devoirs-section-title">Pour vendredi 3 avril</div>
 
-            <div class="devoir-item francais">
+            <div class="devoir-item histoire-geo">
                 <div class="devoir-content">
-                    <div class="devoir-matiere">FRANCAIS</div>
-                    <div class="devoir-description">Se procurer la pièce Phèdre de Racine (peu importe l'édition)</div>
-                    <div class="devoir-footer">
-                    </div>
-                </div>
-                <div class="devoir-actions">
-                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
-                    <label class="devoir-checkbox">
-                        <input type="checkbox">
-                        J'ai terminé
-                    </label>
-                </div>
-            </div>
-            <div class="devoir-item SC.NUMERIQ.TECHNOL.">
-                <div class="devoir-content">
-                    <div class="devoir-matiere">SC.NUMERIQ.TECHNOL.</div>
-                    <div class="devoir-description">Les élèves n'ayant pas leur score PIX indiqué dans Pronote doivent au plus vite saisir le code ci-dessous que je puisse récupérer leur profil. Code PIX : NQYKXM785 Une fois le profil enregistré ; il faut que votre score soit sur Pronote ; vous avez jusqu'au vendredi 20 février pour gagner des points. 1 point sur 20 = 10 points PIX Par conséquent pour avoir 20/20, il faut gagner 200 points PIX. Un conseil pour que votre score augmente plus vite, concentrez-vous sur les items où vous avez le plus petit niveau : cela va généralement assez vite. Je vous transmettrai un autre code lorsque j'aurai récupéré tous les profils pour valider votre progression. Tout retard dans la remontée du profil entrainera la perte de 1 point sur 20 par jour de retard. Par exemple, si vous transmettez votre profil le dimanche 22 février, vous perdrez 2 points sur 20. Bon courage !</div>
+                    <div class="devoir-matiere">HISTOIRE</div>
+                    <div class="devoir-description">Apporter son cahier d'Histoire => Nouveau chapitre</div>
                     <div class="devoir-footer">
                     </div>
                 </div>
@@ -1367,7 +1419,22 @@ body{
             <div class="devoir-item francais">
                 <div class="devoir-content">
                     <div class="devoir-matiere">FRANCAIS</div>
-                    <div class="devoir-description">Apporter le livre</div>
+                    <div class="devoir-description">Apporter Phèdre</div>
+                    <div class="devoir-footer">
+                    </div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+            <div class="devoir-item espagnol">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">ESPAGNOL</div>
+                    <div class="devoir-description">EVALUATION ORALE : apprendre par coeur sa partie d'exposé</div>
                     <div class="devoir-footer">
                     </div>
                 </div>
