@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cahier de Textes - Pronote</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+
+.header-top{
+    height:47px;
+    width:100%;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    box-sizing:border-box;
+    color:#000000;
+}
+
+.header-center{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar-container{
+    width:64px;
+    display:flex;
+    justify-content:center;
+}
+
+.avatar{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #ffffff;
+}
+
+.header-text{
+    line-height:1.1;
+    text-align:left;
+}
+
+.title{
+    font-size:20px;
+    color:#4b4b4b;
+    font-weight:600;
+    margin-left:10px;
+}
+
+.subtitle{
+    font-size:18px;
+    color:#4b4b4b;
+    font-weight:500;
+}
+
+.logo{
+    height:28px;
+    margin-left:auto;
+}
+
+.header-bottom{
+    height:45px;
+    width:100%;
+    background:#4b4b4b;
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    box-sizing:border-box;
+    gap:10px;
+}
+
+.header-tertiary{
+    height:30px;
+    width:100%;
+    background:#D8DBDC;
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    box-sizing:border-box;
+}
+
+.last-connection{
+    font-size:11px;
+    color:#4b4b4b;
+}
+
+.main-content{
+    background-color:#F8F8F8;
+    min-height:calc(100vh - 47px - 45px - 30px);
+    padding:20px;
+}
+
+.devoirs-card{
+    background-color:#ffffff;
+    border-radius:8px;
+    padding:20px;
+    width:100%;
+    box-shadow:0 2px 4px rgba(0,0,0,0.1);
+}
+
+.devoirs-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.devoirs-title{
+    font-size:18px;
+    color:#2a327b;
+    font-weight:600;
+    text-align:center;
+    width:100%;
+}
+
+.devoirs-section{
+    margin-bottom:25px;
+}
+
+.devoirs-section-title{
+    font-size:14px;
+    font-weight:bold;
+    color:#2a327b;
+    margin-bottom:15px;
+    padding-bottom:10px;
+    border-bottom:2px solid #d5d5fa;
+}
+
+.devoir-item{
+    padding:12px 12px;
+    border-bottom:1px solid #e0e0e0;
+    border-left:4px solid #d5d5fa;
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto auto;
+    gap:10px;
+}
+
+.devoir-item.francais{
+    border-left-color:#FF2100;
+}
+
+.devoir-item.anglais{
+    border-left-color:#FFEC13;
+}
+
+.devoir-item.mathematiques{
+    border-left-color:#00BEF0;
+}
+
+.devoir-item.espagnol{
+    border-left-color:#FF5D00;
+}
+
+.devoir-item.histoire-geo{
+    border-left-color:#54792F;
+}
+
+.devoir-item:last-child{
+    border-bottom:none;
+}
+
+.devoir-content{
+    grid-column:1;
+    grid-row:1 / 3;
+}
+
+.devoir-actions{
+    grid-column:2;
+    grid-row:1 / 3;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    gap:8px;
+}
+
+.devoir-checkbox{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-size:12px;
+    color:#2a327b;
+    cursor:pointer;
+    grid-row:3;
+    align-self:end;
+}
+
+.devoir-checkbox input[type="checkbox"]{
+    cursor:pointer;
+    width:16px;
+    height:16px;
+    accent-color:#2a327b;
+}
+
+.devoir-matiere{
+    font-size:13px;
+    font-weight:bold;
+    color:#2a327b;
+    margin-bottom:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.devoir-statut{
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:4px;
+    font-size:11px;
+    grid-row:1;
+    align-self:start;
+}
+
+.devoir-non-fait{
+    background-color:#E2E2E2;
+    color:#000000;
+    max-width:48px;
+    margin-right:-60px;
+}
+
+.devoir-fait{
+    background-color:#E5F5E5;
+    color:#2d9e2d;
+    max-width:30px;
+    margin-right:-60px;
+}
+
+.devoir-description{
+    font-size:13px;
+    color:#4b4b4b;
+    margin-bottom:8px;
+    line-height:1.4;
+}
+
+.devoir-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.devoir-file{
+    font-size:11px;
+    color:#2a327b;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.menu-item{
+    color:#f6f6f6;
+    font-size:14px;
+    cursor:pointer;
+    text-align:center;
+    line-height:1.2;
+    font-weight:bold;
+    padding:8px 12px;
+    border-radius:4px;
+    transition:all 0.3s ease;
+}
+
+.menu-item:hover{
+    background-color:#ffffff;
+    color:#000000;
+    border-radius:0;
+}
+
+.menu-item.active{
+    background-color:#ffffff;
+    color:#4b4b4b;
+    border-radius:0;
+    padding:9px 8px;
+    margin-left:-15px;
+}
+
+.menu-item.icon-only{
+    background-color:transparent !important;
+    color:#ffffff;
+}
+
+.menu-item.icon-only:hover{
+    background-color:transparent !important;
+}
+
+.menu-item.icon-only:hover svg{
+    stroke:#f6f6f6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-top">
+    <div class="header-center">
+        <div class="avatar-container">
+            <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK%0ACwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQU%0AFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAE7ANIDASIA%0AAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA%0AAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3%0AODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm%0Ap6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA%0AAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx%0ABhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK%0AU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3%0AuLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCvHK+n%0ARLZhGkcclj0q09pcPZ3D4RXYYVRWm+o2sVtFL5YZcYOepNZh1w3V4qRxMo6Bcd6+0V2fPnO2mgap%0AEJXZwgYEEMa3NFWaPTRG026IHBXPU1qoGuD+9U5Xhlaufneez1qOGyCGNW3MD2p7k7GtJptvJDKG%0AQQNjJz3rOj0W5kmDWJAX+PcOo9q7Owt7e8glmkRXmb5ee9ZgefS714JF2xn7jLST6DaL9tF5GmG2%0AjbFwRwp7Uum399DA9vJGr7P4x2FP0yxMzSyeZ5kmMbvT2qORrjRpp2lX92y4z1zU76DKniS6jFuf%0AMQSArwAO9ckLme1MEckXzSn5fQCunW6jv4mOQknQbueKnliiuLQRhA8uMByOlaLTQjc5TVbGWZIz%0AJ8gX+IdKdFeQQW0ojfzjt4QetdlHYQGKOKVN5I6Gkm8MWkqrJbRLGw6gCnzILHK6dM8+k+W7ETE7%0AmKjoKmtodp4+Y5yM9a6Sayj0qMMqAuww3FZQ0t5NQW4VuG42U1JCsWIs6nblXjGRxurJn3WwWIYO%0A1+ADzXc2OlKmDtUpj16msWfTHa/wYk2kkg1CkrlNFKyu5bmV4pItqFeGA710dl4bjn06MzSkeV83%0APesqMzx3DllSOFOpPU1vw6oJ7RTAFkUdcdKmV+g4+Zi36tOrHB8pOFX1rm7vZNG8LIfMb7rY+7XU%0AXV7LJeBREGBPGOmKt6hoj3KRfuFT1x1qk7bj3OBns5NOsVJuC2eCB1NZrWEzQpHC+1Cd3vXa6j4b%0ASOQAneyjNZdm8VrbTyGHeQTgValoZtakRsvt8EKJLzEPmHvVS0jMjvHMqsi5+Y9a0YyUtfOiXAl7%0AdxVvSdJUxl7gcv0FF7BucVd6VO8rPF80YPFYt9aXpuFRLfYD/H6V6VdwHTpCFUOo+YAd6z3s7iaH%0Azni25O7GOlO4WPPfs2qjjD0V3omjx92ikI03tbVbcq+4ujbgual0+zZZhIBsYtwvcCnOiXJkuFAi%0AjHAJ71pxQolutw0g3EcEVlc1FuZobe4SGX5nY5ytYuo6G13fPLbN5ORyfWpmugvnyTlWm3YiNOsb%0AhoZnWZs7+jdhTSaDcFhubMW3lEhh2Pepr/U/OvkhRPMmIGT6VasLa9u717gSr5aDAQjiq/8AZk8d%0A1JPI4R92cgdaOuoumh0Gn6c1vZuUGHY5anaraR6napGxbgfMaltb2OytRJM+9QDlc81zk/i+1nSe%0AG3fdtYg84IOeQRWDmov3maqEpK6RI+kW7RCWEhdvy+9NXTPsawyvIWLqcDPQVxWt/EG08MyuJ2Lz%0A+WZEgVuWxz+H16V5F4l+K2r6jrEs97fCC1WERw2yApsHqT3PJ5rjr4+nR0vdnXRwVSrq9EfQh1Oy%0A0m4klnuwZFXPl7skV514t/aB/sO8mttGg+1SIP3suQVVvT/Jryz/AISnT7yVpWmZnkAUlmOSPTPb%0A8a4Xxb4jjhka1s4hHCT8yoM469D36/ie1eTUzGpUXLFWPTjgKdN80nc7qy/aO8RQ3VyZ5Pt7uD5f%0AmNhIz27c9f8A69SL+0Zq1qoYn+07k9WVQsa+wArxNrqfVNSjEci2sMQAI5xz0/Klubd0naZcBCuC%0ASBz+Fcnt61rczNVSp78p9N+F/wBpDUb1VS5tkhTIXAUjI6cZOPz/AOrZsf2hLe21fyL/AE2WGJjx%0AIsokyPUYr5g0mdoLaPypSXbopyV69Pr/AOj3rUtNdeKWOR2jcDkKWyFHYY57960jja8NOYTwtGe6%0APqjUviRpWqj/AEW4dVcYbcCMfUdvrXYeGLSRtJLxSiSB+QVbtXyTb+KnuGjLTqoPPkzKDk9/f8va%0AvVPh98Z49CmWzuGMmnN95Orwk9xnt7V6eHzJyfJVVvM4a+XpLmpP5HvsN3FHbKqREsvViK17a9a8%0AsmckMV4G2s3Trm11rTUbT5I54pVDCRCGDA+hq0wj03TiqLtk9M17V1LY8jWL1MdL0211L5sbSluv%0AsKfFLam1eaOEJz91hWHcajMl/EJl8tWOM+tdB9mafTQxwFB5IFaNWITuLAbWa32pGu9+vtTXvLaE%0AiBVGemD3qjCVt0bbJvUdh1plpdpdXKhYMbD1Pc0rDuVrzy5Lhg0gXaelW76/gNsq71jRV/OqMiwT%0A3krOvlylsU3WNIheQZmLoFyFHTNVYm7FWDT2UHcvNFZgsJew4op28xXIpI57rQhF8+8Pj5e9dPpd%0ArPJpUVs/ytt4XvVrSbLFspcAPt6CrslqYwkkbbZEPI9azcrlpHMto6RXWyaTvn5uxrWg09Vt5M/N%0AGTnca00S3uhlovMkJ54qvO7zSNbw/KoGCMUrtjLkPk21plGXkdjUkSR3oA8vLkYyegrAk0yawsTL%0AMxCjLEjoK53xD46k8KQ299cQh4rhQixOcNkZIwMcZz1PpXPWqxpK7N6VKVV2RseM2i8MGG9u7pIY%0AmHltHIeH54x6Ht75rx3xP47s5byOezjEA3A72XJ4+9kDr0rzr4r/ABYufH2ozTXG428eVhRG2rEP%0AYHuf6/hXmN1471DTIBLb7kliHysWJZRz696+ZxWJdaXubH0GGoqjH39zuvEnjVHv5Li5mVgGDYkX%0AnAPP1xnp+HWvJPEnjOTU9cZzIXjztUK2cDPWqXifxNc6oim6n847RgY55/Gsi109ngt54hggkkse%0AMYHP0zn8jXEo9WbTqPaJ7FYqdHiSQ3SiFh0IVlAzjcc9jx6dcVoX/hk3UEVx9qtr2CRSwWAhQh75%0A65/OvJ01e9RkjilIXaEKueGHtnjnkA9wKt6TqgOtMn2gwRzOcOTnaT2P496OUrnTO11Dw02k7dig%0AzTDbGqoRnjoSSST+FYM8V1cTXUcp2x7RGHPR3479unH4V2tk15pqO93M0sQUPCGbOBjBJ9vTHf6V%0Aga5f/bI3ht41WMEtuYkZ4OTnue3rxU3fQtxRzaXS6XbtHcx/vI2wSM5HufY0HUFvSr7FZB86ue2e%0Ao5HPeqss09yBM9qofHM0oPyjpkjvnHpVC+vVjuCrFZJugIIIH0x09ParWpi3Y6ey1Hypkt2leR3I%0ADQuMj88nn/PavR9OtLW1khaQ+S4XaRuB/Ag8jHTn+leX+FbuW0haR4hhnw7EkYXGevYf4V0V1q5v%0Arz/j5KRbN3kkAYBX5WBGD19fapeprF2V2eo+FfEOo+Dr55dLuxLF96SKNxgYPOR3Pbtn3r27wv8A%0AGe38RW0UUoX7cmA8ZGM8dR7cV8gR311pcaXkMjNdxt85iOdyAfex6/X0FdFD4gkh8S2Twlhuy42A%0A+ikfqeld2GxVSg+67HPXw9OutrM+0ZZINUht5TFmXOcelWpdQQR+UCIlPG3Ncx8OvGGn674ejnhA%0AMqjZJGfvBv8AP863L9reWMSGBt/YAV9dCaqRUo7M+XnF05OMtzPhZYLyTowzyKnzcM+bdVXu3HQV%0Aa0nS4zFNJOjJJ1GasWomt4pJGiLRkYBxWjZmjMWwMsnmtKrjPNa1qkEwZXVVVTjJ61Rkjcqqw/u2%0AJyQR0qu7XMN/iZGMRHVRwaT1A2TFZZ++tFZ3mRn/AJYmilYst6dEmnRgRTGTJz85rUjul8iSV1BI%0A546VHY6IEkOBvIzw1POm3EsZh4jQnnFZuzHqVtDmnjgmuHUDexKgjoKb9jvLm6M0aiOFhlm71ox6%0AVPYwtHnepHDVbtJUSxZHfLjjb6Ur21Qjk/FU89rpapJJugaSNX+hdQc/nXz7+0T4sl1i6t7O2lEc%0AVmgQRryWc/eJ7frX0Pr+iS39rPAdrRzqUIPofQ/4V8h+KrCSS4v5bsi4uPPeFJGGNyq33vp7Dufa%0AvGzFuMVbqexgFzN+R5f4n1gCzi+yPvnVSk90RlnbrhOuAM9vT6CuNLXUy5kaaUv8qRqxyx9+4Fd/%0AqPhf7fevtZ9iISVHCr6nP8I+vvistdEDShoCFUEJGhAAx6kd+epx3rwNj17OWpy9npZSQNe7AGYf%0AL/EB9AMY9q7PVfBN/p1lbX2n2pn0uZGiBTBDAZJQj1GW568+3GjoPhtbmUWk67JG+YPtwFwN2Wx6%0A8fnXYeHNEvNFjkim3tYTniKVtwU5+YjA4OBnPsKlyNI0u55FpegMHj3fIrHOB69jjscj2/x0NZ8P%0AxWKxXQjCsyl9ij5Rycg9P8mvSF8P2sOrSmNPLV5FdmYZz6Y9Of6VH40sLFdWgggEkrAKzpFzk54H%0A04yfQfhUKTbNfZxSI4dMhj8L20LGWS6lgEQDDkA5JA9uQD9B715rqct7pkbKrbIEOI/LX5h1x6gH%0AI7V6IupXN3fQPeEIykhLcDLDsBgZ45HbnmoviJHaTaZbRW0AWQE7h+XX6f1NWmRKN0eQR2tzq1wz%0ASs7JHlizEngDOST/AJNR2Vkt3cyTMNo3Fl3deeQK7mDTZrDSSkkJjjulJXcMFgwwD+nH1qnbaRHb%0AXokukZ7WEKmxeNx5x/Wm5GSpdTd8P6SP+EcuWtLhFibmWCUZDdc4O4Y6j8qqXelIWjvUBESqEKSk%0AqADxgEAAjA9ew9a6a60mTUnE9llIiAUB+UnA56jGO38qy7Ke5sftNrLdNJFhiFGTsPPJyPz/ABqV%0AI2cEitf3sNlZ3bMBNO8e2NduPMGe5z+ntWBfaveQ6nbPO3ltCoRYYx0A9QOBxgc1avNXvYA0ckyI%0AwJ4EYLMcgDnrx7+1c9PqkULsfs6SOfvTSkhAevK9W+nT2NaJHPNpM+g/2fPE9xP44SxLYa5BIAIA%0AcAZ59x1/Md6+v9mZLdHQKP7xr4J+B2p3E/jzw9ePMQ6zJFuJxwWA/AYPSv0B1FkktoyRtAxX0eXS%0Afs3Hszw8clzqXcS9YQzYYAkj5QOhqzbOqQYnK887azNXEwFqEfKMQCe4qSHSJWuCdxwBnPrXr9Dz%0AOpXeeKWfyUXLsc7/AEq1eIlmirIwcEc1FcqtnG0jBQw6fWst7uXU7Ukx4YcE07XC4jXlruP+NFYJ%0As+T9786K05UTc6caxcxzBSNxJ/h61pW9/M8z742RUXPzd6p+HxDeuJU5kXgitTVrOWdwxkCIPvKO%0A9YO17GnQrw61Lc20rlsMpwqUy3t5pWZ/utJ1zV6z02BLXABDE8E1FbzKbmRWBaNeOKPQXqYPi7UW%0A0a3SRt06x/61FOMJgZYfiw/+tXyt4xurS51bUrdi0CRyt5cU0bB1G5toAH1Pt0r7N1LR4rm0E6xr%0AJMEZPLlGVkRuqn8h/k18iePvAd74d1m+v3R7mFs8kE+WQcgEcnGAeee2c14mYRk4po9nAyim0eR3%0AsE1zqEMYV0SRthaT5QB0JwMevH58V0nhrS7Kfz4Qf3yFM3GNqdsqvp0OD3yaraTpq61qgFxcKsUS%0AtK7lhhEUMxx7nGPfP5yTanDY6VcWiNtbzt5Zhzt4AB+g/wA81862e9GOtzo7WXTrJp5JNiALli3b%0Agflx/Uo4dQlubxWibbBDFtChTsJPIbn04HXtWFpT6cXuGuT9pbJOJZMBwDz6f5NS3fjCKcPDb2sc%0AUKAriEgn8upqG9DZXJtQvjb2skqSRyLGNpbBAyeSAf8APXvXGRXN7f3d/qRYrbISEeTne3baP1/S%0AtRnfUUWJLYRxs4wrDGSfXP8ASt3V7CeS0g023VYVYhTtX5j+HX0qOaxooN6s5HR/tdxvuJpGaVG3%0ABTjfj3yMc5H860bG3l8SayTeXMktvBkFWxgkZ9+eh/I11dr4Xi0vRpZFKwuOJc4znGdoGP8AOe9Y%0AHha0lnvlWGJ3Zm42KflT+I4x7fl9apTQnSeiI/E9uZbmeQLt2bSEBztVR7+2KuaX4Wi1XRnl5XzG%0AQhmOOctj8wQPwrrtS0GNLaS4miZt6OiM33icDqOw5/THpXQ+EtCW0tvIePMbbSrH+FQoIOPqD/30%0AKxlPQ6KdK0rM4HSmaK1uLGVttyjMFDHaw4Py4/Af5Fc5FZfaLiRL4JGqA7sgbiDx0wT3rs/GFlLa%0AeKZbuzgDLHEnmIAMHgjr64ya5/xBo1w2pXjQ2zQrNMZFhA3MM5OO+Op/CnGetxVKeljkvFGgpe6y%0Abq0k81VWLO3ADnYM8Z7kfrXEaza3MBWYBRDK7LGy8dPvA989Meua7XWI59Gu2jS4YxRrguDwxHpW%0ABcWpvtPnVSXXzVZCvOCR0/lXZCVzyasLGt8Ibt4vG+iRh2P+lRqMem8Gv0hhvI20yIEKXP8Ae7V+%0AfvwK8NpdfFrw5DcsYY2mznHRgrMB+a1+gsWlRyq8O7ceqmvo8tVoSb7ngY5+9FFhRHPCCNrbOTir%0AczulmSoCsRkNUOh6Qtr5gwzjNWNSxtwAQgr1tL2PN6XOecvfxCGSMMc/eWo7krbzpGVCjHAUVM8Z%0Atb3EJbaeW4qwRHOkk525A5rS9iDBa1g3H5j1oq19pT/nkf8AvmincCx4Rt3tLTeIim5ifm61e1iz%0AuLkpIspUg8r610FklrE+xlzx8oqtcSEXZ2IDFjvWHNrc25dDPt7hoYQ8rDA4wKf9gRQ0ke7DnJx3%0AqaK3iNvLvTIbtVqAwR28cRymePmovYmwiL+7TgkKuMelcL8UtEtdV8JaksYJkWF2ARcsflOcf56Z%0Ar0aW0RrMeVMPMHp3qjHo63su2c7kIx7Cs5JTi0zaLcJJn5vSytbancRMzGRTsLxjbu7jJJ+naqb6%0Add3MiPKB5cp2g+v/ANf/AOK952/SkYdxSk4phbacV8YfQFSUYkOOM81YB3xVX1AFYTIvVOfwp1nKJYsg5Bp9AKsud5rSs33RCs25+ararVjJ8mKb2Avk4ptJupc8VIEEtRodrU+U1GtUgLAORQ3SmKacTmpAhcc0K3alkFRKeasCdealU%0AVGnSpV61ADqhuziFvpU1V7z/AFDfSgDj7Zv3sv8Avmtm0+7WJanMsh/2jWzanCda2KY+7bKEVWsp%0APmX8qlvDsjJqjZSbunY0raCR08ZyoqnrJzYTf7pqxbsSgzVXWDiyl/3TUrcRy0KbwW7yHP8AwEf/%0AAF68f/aU0g3fhW21BVzJazAkj+63B/XFezRDEBfGNwwo9BXE/FHSTrvgLW7ROZTC5THZgMj9RXVS%0AlyTUiKkeaLR8XHXwvHlNx7UVzxZs8uc/Sivp+VHhXZ+rs8ojXJqot2so9KnuRvQ1kSFrfnGRXxqR%0A9AaYk86Ig98giqOhvjzouuxuKitrv/SJU7FRIP5H+Q/OmaE+67uf896dtALt7xKKdp74Jpl+f3gp%0Aunsd5o6Aa5OaM8YpFGRQelQBFJ1pgFOfrSDrVIBQcU/PGajPWnA5FMBrmoQcNUrtUP8AFQBajNTL%0A1qCM5FTqOKlgGear35xbufapx1qpqjbbST6UIDkLM/eP+0f51t2nK1h2PKH6mtyw6CtWUyPVDiE1%0Amae3JHqava0+2Iis3TjnmmtgR1ds37oVU1p8WMv0qa1fKCqOvPixl+hqFuSY15cCOAc9ulYspNzB%0ANGR8rgZFLf3TXEqwQjk9T6VpWmmC2tn5yzrnJ9q12Gz86/EuhzWPiPVbZc7YbuWMcejkf0or37xL%0Aodo/iPVWKrk3cp/8fNFer9ZPM+r+Z9obwRVeSJXJBGQalPDVG1eGj0jKvFWzvrdugcMmT7//AKqk%0A0FMXFwaq+KmKwW7A4bzF5/Gruhkl5fwqug+hNfH96B7Umncux96S/wD9efpTtM6mjoI1/wCGmsaW%0AmmswIm60lK3Woz0qwHE570obAxTP4qD0oAGNR55zTj0pi96ALcHap+gqCD7tTt0qWA0HNUtXOLOT%0A/dNXR0rP1r/jzk+lC3A5PTzlSPet23O0CsHS+n/Aq3U+5WhTKGvSfuutUdPOFzUmusdvXvUWm/6s%0AVSGdJaP8gqj4ikxYyfSrVp92qHiL/j0epW5Bg6XbrFl2G5271syuUtlfptIqC3QLCMDHFWL/AOXT%0AXxxxVMs+bvEfhLUp/EOqSR52PdSsv0LnFFepXR/0mX/fP86K952Y+yif/9k=" class="avatar" alt="Photo profil">
+        </div>
+        <div class="header-text">
+            <div class="title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:8px;transform:translate(-5px, -3px);"><rect x="2" y="4" width="20" height="16" rx="2" fill="#555555"/><rect x="3.5" y="9" width="17" height="10" rx="0.5" fill="white"/><circle cx="7.5" cy="12.5" r="2" fill="#555555"/><path d="M4.5 17.5C4.5 15.8431 5.84315 14.5 7.5 14.5C9.15685 14.5 10.5 15.8431 10.5 17.5V18H4.5V17.5Z" fill="#555555"/><rect x="12" y="11.5" width="7" height="1.5" rx="0.3" fill="#555555"/><rect x="12" y="14.5" width="3" height="1.5" rx="0.3" fill="#555555"/><rect x="16" y="14.5" width="3" height="1.5" rx="0.3" fill="#555555"/><rect x="12" y="17" width="7" height="1.5" rx="0.3" fill="#555555"/></svg>LYCEE POLYVALENT CONDORCET</div>
+            <div class="subtitle">Espace Élèves - CASTRONOVO Enzo (2DE5)</div>
+        </div>
+    </div>
+    <img class="logo"
+         src="https://0781884z.index-education.net/pronote/E_3_C_E482ECCC96AA9D5B722BB62DC56FFB74ABB32EF479BA6D61F650EA4653A716D8_L_1036/images/logo-pronote-2021.svg"
+         alt="Logo Pronote">
+</div>
+
+<div class="header-bottom">
+    <div class="menu-item" onclick="window.location.href='index.html'" style="cursor:pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="white"/>
+        </svg>
+    </div>
+    <div class="menu-item" onclick="window.location.href='Mesdonnees.html'" style="cursor:pointer;">Mes données</div>
+    <div class="menu-item active" onclick="window.location.href='CahierDeTextes.html'" style="cursor:pointer;">Cahier<br>de textes</div>
+    <div class="menu-item" onclick="window.location.href='Notes.html'" style="cursor:pointer;">Notes</div>
+    <div class="menu-item" onclick="window.location.href='VieScolaire.html'" style="cursor:pointer;">Vie<br>scolaire</div>
+    <div class="menu-item">Communication</div>
+    <a href="mailto:0781884z@ac-versailles.fr" class="menu-item icon-only" style="margin-left:auto; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.5 3L2.5 10.5L9 13.5M21.5 3L14 21L11 15M21.5 3L11 15M11 15L9 19L9 13.5" 
+                  stroke="white" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+        </svg>
+    </a>
+</div>
+
+<div class="header-tertiary">
+    <div class="last-connection">Cahier de Textes</div>
+</div>
+
+<div class="main-content">
+    <div class="devoirs-card">
+        <div class="devoirs-header">
+            <h2 class="devoirs-title">Travail à faire pour les prochains jours</h2>
+        </div>
+
+        <div class="devoirs-section">
+            <div class="devoirs-section-title">Pour mardi 7 avril</div>
+
+            <div class="devoir-item francais">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">FRANCAIS</div>
+                    <div class="devoir-description">Revoir les chapitres 1 et 2</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+
+            <div class="devoir-item histoire-geo">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">HISTOIRE-GEOGRAPHIE</div>
+                    <div class="devoir-description">Apprendre la leçon sur les civilisations antiques</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+
+            <div class="devoir-item">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">SC.NUMERIQ.TECHNOL.</div>
+                    <div class="devoir-description">Terminer l'exercice PIX du code QSZRLK839</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="devoirs-section">
+            <div class="devoirs-section-title">Pour vendredi 3 avril</div>
+
+            <div class="devoir-item histoire-geo">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">HISTOIRE</div>
+                    <div class="devoir-description">Apporter son cahier d'Histoire => Nouveau chapitre</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+
+            <div class="devoir-item francais">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">FRANCAIS</div>
+                    <div class="devoir-description">Apporter Phèdre</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+
+            <div class="devoir-item espagnol">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">ESPAGNOL</div>
+                    <div class="devoir-description">EVALUATION ORALE : apprendre par coeur sa partie d'exposé</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="devoirs-section">
+            <div class="devoirs-section-title">Pour mardi 31 mars</div>
+
+            <div class="devoir-item francais">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">FRANCAIS</div>
+                    <div class="devoir-description">gr 1 : Revoir les tableaux 1 et 2 des pages 524 et 526 + faire les exs p 525 n° 3 et 4 et p 528 n° 1, 4 et 6 + apporter chacun son livre (ceux qui n'auront pas leur livre ne seront pas acceptés)</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+
+            <div class="devoir-item histoire-geo">
+                <div class="devoir-content">
+                    <div class="devoir-matiere">HISTOIRE-GEOGRAPHIE</div>
+                    <div class="devoir-description">Réaliser facultativement l'introduction du sujet sur Venise situé en P.J. Le tout sur feuille.</div>
+                    <div class="devoir-footer"></div>
+                </div>
+                <div class="devoir-actions">
+                    <span class="devoir-statut devoir-non-fait">Non Fait</span>
+                    <label class="devoir-checkbox">
+                        <input type="checkbox">
+                        J'ai terminé
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
