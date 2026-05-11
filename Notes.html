@@ -510,16 +510,29 @@ body{
 <div class="average-bloc">
     <div class="average-row">
         <span class="average-label">Moyenne générale élève :</span>
-        <span class="average-value" id="studentAverage">12,02</span>
+        <span class="average-value" id="studentAverage">12,59</span>
     </div>
     <div class="average-row">
         <span class="average-label">Moyenne générale classe :</span>
-        <span class="average-value" id="classAverage">10,89</span>
+        <span class="average-value" id="classAverage">10,25</span>
     </div>
 </div>
 
 <script>
 const notesData = [
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Principe d\'inertie', date: '23 avril 2025', score: '7,50/10', max: '10', average: 'Moyenne classe : 7,34/10', hasLinks: false},
+    {subject: 'SC. ECONO.& SOCIALES', test: '', date: '14 avril 2025', score: '4,00/5', max: '5', average: 'Moyenne classe : 3,89/5', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'Correction Evaluation', date: '10 avril 2025', score: '15,00', max: '20', average: 'Moyenne classe : 12,61', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Poids/masse', date: '9 avril 2025', score: 'Abs/10', max: '10', average: 'Moyenne classe : 6,97/10', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'Évaluation Chapitre 1', date: '27 mars 2025', score: '11,00', max: '20', average: 'Moyenne classe : 6,10', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Etudes de mouvements', date: '26 mars 2025', score: '9,00/10', max: '10', average: 'Moyenne classe : 6,37/10', hasLinks: false},
+    {subject: 'ESPAGNOL LV2', test: 'EOC Madrid au-delà des clichés', date: '23 mars 2025', score: '12,00', max: '20', average: 'Moyenne groupe : 13,73', hasLinks: false},
+    {subject: 'MATHEMATIQUES', test: 'Interrogation n°9', date: '19 mars 2025', score: '11,00/15', max: '15', average: 'Moyenne classe : 6,62/15', hasLinks: true},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'TP Referentiel', date: '18 mars 2025', score: '6,00/10', max: '10', average: 'Moyenne classe : 6,62/10', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'Réponse à la problématique', date: '18 mars 2025', score: '8,00/10', max: '10', average: 'Moyenne classe : 6,93/10', hasLinks: false},
+    {subject: 'PHYSIQUE-CHIMIE', test: 'Évaluation chapitre 5', date: '17 mars 2025', score: '10,50', max: '20', average: 'Moyenne classe : 10,00', hasLinks: false},
+    {subject: 'ANGLAIS LV1', test: 'Identity snapshot', date: '17 mars 2025', score: '6,50/10', max: '10', average: 'Moyenne groupe : 5,92/10', hasLinks: false},
+    {subject: 'HISTOIRE-GEOGRAPHIE', test: 'Activité Cartes anciennes', date: '16 mars 2025', score: '9,00/10', max: '10', average: 'Moyenne classe : 8,58/10', hasLinks: false},
     {subject: 'SC. ECONO.& SOCIALES', test: 'Evaluation', date: '21 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 11,46', hasLinks: false},
     {subject: 'FRANCAIS', test: 'Contraction de texte', date: '13 février 2025', score: '11,50', max: '20', average: 'Moyenne classe : 9,14', hasLinks: false},
     {subject: 'FRANCAIS', test: 'Discours argumentatif', date: '10 février 2025', score: '12,00', max: '20', average: 'Moyenne classe : 10,86', hasLinks: false},
